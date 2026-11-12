@@ -1,0 +1,146 @@
+/* MagicFields — admin styles (field controls + builder). */
+
+/* ---------- Field controls ---------- */
+.magicfields-root { --gf-border: #dcdcde; --gf-muted: #646970; --gf-accent: var(--wp-admin-theme-color, #2271b1); }
+.magicfields-root *, .gfb * { box-sizing: border-box; }
+.magicfields-root__description { color: var(--gf-muted); margin: 0 0 12px; }
+.magicfields-fields { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.magicfields-field { flex: 1 1 100%; min-width: 0; }
+.magicfields-root--side .magicfields-field { flex-basis: 100% !important; }
+.magicfields-field__label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; }
+.magicfields-field__required { color: #d63638; }
+.magicfields-field__help { color: var(--gf-muted); font-size: 12px; margin: 0 0 6px; }
+.magicfields-root .magicfields-input,
+.gfb .components-text-control__input,
+.gfb .components-textarea-control__input,
+.gfb .components-select-control__input {
+	width: 100%; max-width: 100%; min-height: 36px; padding: 6px 10px; margin: 0;
+	border: 1px solid #8c8f94; border-radius: 4px; background: #fff; color: #1d2327;
+	font-size: 13px; line-height: 1.5; box-shadow: none;
+}
+.magicfields-root textarea.magicfields-input, .gfb textarea { min-height: 0; resize: vertical; }
+.magicfields-root select.magicfields-input, .gfb select { padding-right: 28px; }
+.magicfields-root .magicfields-input:focus, .gfb input:focus, .gfb textarea:focus, .gfb select:focus {
+	border-color: var(--gf-accent); box-shadow: 0 0 0 1px var(--gf-accent); outline: 2px solid transparent;
+}
+.magicfields-choices { display: flex; flex-direction: column; gap: 6px; }
+.magicfields-radio { display: flex; align-items: center; gap: 6px; }
+.magicfields-radio input { margin: 0; }
+.magicfields-button-group { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.magicfields-color { display: flex; align-items: center; gap: 8px; }
+.magicfields-color__swatch {
+	width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); margin-right: 8px; flex: none;
+	background-image: linear-gradient(45deg,#ddd 25%,transparent 25%,transparent 75%,#ddd 75%),linear-gradient(45deg,#ddd 25%,transparent 25%,transparent 75%,#ddd 75%);
+	background-size: 8px 8px; background-position: 0 0,4px 4px;
+}
+.magicfields-media__preview img { display: block; max-width: 100%; max-height: 220px; height: auto; border-radius: 4px; border: 1px solid var(--gf-border); margin-bottom: 8px; }
+.magicfields-media__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.magicfields-file { margin-bottom: 8px; word-break: break-all; }
+.magicfields-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; margin-bottom: 8px; }
+.magicfields-gallery__item { position: relative; border: 1px solid var(--gf-border); border-radius: 4px; overflow: hidden; background: #f6f7f7; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin: 0; }
+.magicfields-gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.magicfields-gallery__tools { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; background: rgba(255,255,255,.92); }
+.magicfields-link { display: flex; flex-direction: column; gap: 6px; }
+.magicfields-picker { position: relative; }
+.magicfields-picker__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.magicfields-chip { display: inline-flex; align-items: center; gap: 2px; padding: 0 2px 0 10px; background: #f0f0f1; border-radius: 14px; font-size: 12px; line-height: 26px; }
+.magicfields-picker__results { position: absolute; z-index: 100000; left: 0; right: 0; top: 100%; max-height: 240px; overflow: auto; background: #fff; border: 1px solid #8c8f94; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,.12); padding: 4px; }
+.magicfields-picker__result { display: flex; justify-content: space-between; gap: 12px; width: 100%; padding: 6px 8px; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 3px; font-size: 13px; }
+.magicfields-picker__result:hover, .magicfields-picker__result:focus { background: #f0f6fc; }
+.magicfields-picker__result.is-selected { font-weight: 600; }
+.magicfields-picker__result small { color: var(--gf-muted); white-space: nowrap; }
+.magicfields-picker__empty { margin: 8px; color: var(--gf-muted); }
+.magicfields-group, .magicfields-repeater__row { border: 1px solid var(--gf-border); border-radius: 4px; background: #fff; }
+.magicfields-group { padding: 12px; }
+.magicfields-repeater__row { margin-bottom: 8px; }
+.magicfields-repeater__head { display: flex; align-items: center; gap: 2px; padding: 4px 6px; background: #f6f7f7; border-radius: 4px 4px 0 0; }
+.magicfields-repeater__row.is-collapsed .magicfields-repeater__head { border-radius: 4px; }
+.magicfields-repeater__title { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; border: 0; background: none; padding: 4px; cursor: pointer; text-align: left; font-size: 13px; }
+.magicfields-repeater__num { flex: none; min-width: 22px; height: 22px; line-height: 22px; border-radius: 11px; background: #dcdcde; text-align: center; font-size: 11px; font-weight: 600; }
+.magicfields-repeater__summary { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--gf-muted); }
+.magicfields-repeater__body { padding: 12px; border-top: 1px solid var(--gf-border); }
+.magicfields-tabs { flex: 1 1 100%; display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--gf-border); }
+.magicfields-tabs__tab { border: 0; background: none; padding: 8px 12px; margin-bottom: -1px; cursor: pointer; border-bottom: 2px solid transparent; font-size: 13px; color: var(--gf-muted); }
+.magicfields-tabs__tab.is-active { border-bottom-color: var(--gf-accent); color: #1d2327; font-weight: 600; }
+.magicfields-message { color: #3c434a; }
+.magicfields-missing { margin: 12px 0 0; padding: 8px 12px; border-left: 4px solid #d63638; background: #fcf0f1; }
+.magicfields-wysiwyg .wp-editor-area { width: 100%; }
+.magicfields-card { margin: 16px 0; max-width: 900px; }
+.magicfields-term-add { margin: 0 0 16px; }
+.magicfields-term-add h2, .magicfields-mount + h2 { margin-top: 24px; }
+.magicfields-block-empty { opacity: .6; font-style: italic; }
+.magicfields-options .magicfields-mount, #edittag .magicfields-mount, #your-profile .magicfields-mount { max-width: 860px; }
+
+/* ---------- Builder ---------- */
+.gfb { max-width: 1240px; --gf-border: #dcdcde; --gf-muted: #646970; --gf-accent: var(--wp-admin-theme-color, #2271b1); }
+.gfb-header { display: flex; align-items: center; gap: 16px; margin: 12px 0 8px; }
+.gfb-header h1 { margin: 0; padding: 0; font-size: 23px; font-weight: 400; }
+.gfb-nav { margin-bottom: 16px; }
+.gfb-notice { margin: 0 0 16px !important; }
+.gfb-notice ul { margin: 6px 0 0 18px; list-style: disc; }
+.gfb-card { background: #fff; border: 1px solid var(--gf-border); border-radius: 6px; padding: 16px 20px; margin-bottom: 16px; }
+.gfb-card > h2 { margin: 0 0 12px; font-size: 15px; }
+.gfb-welcome { text-align: center; padding: 48px 20px; }
+.gfb-welcome p { max-width: 520px; margin: 8px auto 20px; color: var(--gf-muted); }
+.gfb-table td, .gfb-table th { vertical-align: top; }
+.gfb-danger { color: #b32d2e !important; }
+.gfb-status { display: inline-block; padding: 2px 10px; border-radius: 10px; background: #f0f0f1; color: var(--gf-muted); font-size: 12px; }
+.gfb-status.is-active { background: #edfaef; color: #007017; }
+.gfb-editor { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 20px; align-items: start; }
+.gfb-editor__side { position: sticky; top: 48px; }
+.gfb .gfb-title { width: 100%; font-size: 20px; padding: 8px 12px; min-height: 46px; margin: 0 0 16px; border: 1px solid #8c8f94; border-radius: 4px; }
+.gfb-actions { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 16px; }
+.gfb-actions--start { justify-content: flex-start; }
+.gfb-label { display: block; font-weight: 600; margin: 12px 0 4px; }
+.gfb .gfb-short { width: 110px; }
+.gfb .gfb-mono, .gfb-code { font-family: Menlo, Consolas, monospace; font-size: 12px; }
+.gfb-code { display: block; padding: 8px 10px; background: #f6f7f7; border-radius: 4px; margin-bottom: 6px; user-select: all; overflow-wrap: anywhere; }
+.gfb-empty { color: var(--gf-muted); margin: 0 0 12px; }
+.gfb-error { color: #d63638; margin: 4px 0 0; }
+.gfb-fields--nested { padding: 12px; background: #f6f7f7; border-radius: 4px; }
+.gfb-field { border: 1px solid var(--gf-border); border-radius: 4px; background: #fff; margin-bottom: 8px; }
+.gfb-field.is-drop { box-shadow: 0 -3px 0 var(--gf-accent); }
+.gfb-field.is-open { border-color: #8c8f94; }
+.gfb-field__head { display: flex; align-items: center; gap: 2px; padding: 4px 8px; }
+.gfb-field__handle { cursor: grab; color: #8c8f94; margin-right: 4px; }
+.gfb-field__title { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; border: 0; background: none; padding: 8px 4px; text-align: left; cursor: pointer; font-size: 13px; }
+.gfb-field__label { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gfb-field__title code { font-size: 11px; background: #f0f0f1; padding: 2px 6px; border-radius: 3px; }
+.gfb-field__type { color: var(--gf-muted); margin-left: auto; white-space: nowrap; }
+.gfb-badge { font-size: 11px; background: #fcf0f1; color: #b32d2e; padding: 1px 8px; border-radius: 10px; white-space: nowrap; }
+.gfb-field__body { border-top: 1px solid var(--gf-border); padding: 0 16px 8px; }
+.gfb-subtabs { display: flex; gap: 4px; border-bottom: 1px solid var(--gf-border); margin: 0 -16px 4px; padding: 0 12px; }
+.gfb-subtabs button { border: 0; background: none; padding: 10px 10px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--gf-muted); font-size: 13px; }
+.gfb-subtabs button.is-active { color: #1d2327; font-weight: 600; border-bottom-color: var(--gf-accent); }
+.gfb-row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid #f0f0f1; }
+.gfb-row:last-child { border-bottom: 0; }
+.gfb-row--wide { grid-template-columns: 1fr; gap: 8px; }
+.gfb-row__label p { margin: 4px 0 0; color: var(--gf-muted); font-size: 12px; font-weight: 400; }
+.gfb-row__control > p:first-child { margin-top: 0; }
+.gfb-multicheck { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.gfb-rule { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.gfb-rule .gfb-select, .gfb-rule input[type="text"] { width: auto; min-width: 150px; flex: 0 1 220px; }
+.gfb-rule__and { min-width: 56px; color: var(--gf-muted); }
+.gfb-ruleset { border: 1px solid var(--gf-border); border-radius: 4px; padding: 12px 12px 4px; margin-bottom: 8px; background: #fcfcfc; }
+.gfb-or { text-align: center; color: var(--gf-muted); font-weight: 600; margin: 4px 0 8px; text-transform: uppercase; font-size: 11px; letter-spacing: .05em; }
+.gfb-page { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr auto; gap: 12px; align-items: end; padding: 12px 0; border-bottom: 1px solid #f0f0f1; }
+.gfb-page .gfb-label { margin-top: 0; }
+.gfb-card textarea.gfb-mono { margin: 10px 0 0; }
+@media (max-width: 960px) {
+	.gfb-editor { grid-template-columns: 1fr; }
+	.gfb-editor__side { position: static; }
+	.gfb-row { grid-template-columns: 1fr; gap: 6px; }
+	.gfb-page { grid-template-columns: 1fr; }
+	.gfb-field__type { display: none; }
+}
+.magicfields-card .postbox-header h2 { margin: 0; padding: 10px 12px; font-size: 14px; }
+.magicfields-repeater__layout { flex: none; }
+.gfb-layout { border: 1px solid var(--gf-border); border-radius: 4px; background: #fff; margin-bottom: 12px; }
+.gfb-layout__head { display: flex; gap: 8px; align-items: center; padding: 8px 10px; background: #f6f7f7; border-radius: 4px 4px 0 0; }
+.gfb-layout__head input { flex: 1 1 160px; }
+.gfb-layout > .gfb-fields { padding: 12px; }
+.gfb-template { min-height: 160px; }
+.gfb-hint { color: var(--gf-muted); font-size: 12px; margin: 6px 0 0; }
+.gfb-hint code { font-size: 11px; }
+.magicfields-inspector { padding: 0 0 4px; }
+.magicfields-inspector .magicfields-field { flex-basis: 100% !important; }
